@@ -1,0 +1,63 @@
+type QueryReq {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type QueryResp {
+	Book
+	Message string `json:"message"`
+}
+
+type AddReq {
+	Name string `json:"name"`
+}
+
+type AddResp {
+	Message string `json:"message"`
+}
+
+type Book {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type DelReq {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type DelResp {
+	Message string `json:"message"`
+}
+
+type UpdateReq {
+	Book
+}
+
+type UpdateResp {
+	Message string `json:"message"`
+}
+
+type GetAllReq {
+}
+
+type GetAllResp {
+	Books []Book `json:"books"`
+}
+
+service book-api {
+	@handler bookGet
+	get /query(QueryReq) returns(QueryResp)
+	
+	@handler bookAdd
+	get /add(AddReq) returns(AddResp)
+	
+	@handler bookDel
+	get /del(DelReq) returns(DelResp)
+	
+	@handler bookUpdate
+	get /update(UpdateReq) returns(UpdateResp)
+	
+	@handler bookGetAll
+	get /getAll(GetAllReq) returns(GetAllResp)
+}
